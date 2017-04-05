@@ -1,0 +1,173 @@
+
+# Site settings
+
+url: "https://panossakkos.github.io"
+baseurl: ""
+force-https: True
+
+syntax-highlight: True
+
+# Sections shown in the index page
+
+pages_list:
+  About: 'about'
+  Blog: 'latest-post'
+  Timeline: 'timeline'
+  Contact: 'contact'
+
+web-app-mode: True
+
+# Icons for Chrome Web App mode https://developer.chrome.com/multidevice/android/installtohomescreen
+icon-36p: "/img/web-app/icon-36p.png"
+icon-48p: "/img/web-app/icon-48p.png"
+icon-72p: "/img/web-app/icon-72p.png"
+icon-96p: "/img/web-app/icon-96p.png"
+icon-144p: "/img/web-app/icon-144p.png"
+icon-192p: "/img/web-app/icon-192p.png"
+
+#############
+# HTML Head #
+#############
+
+author: "Panos Sakkos"
+lang: "en"
+title: "{ Panos Sakkos }"
+short-title: "{ Panos }"
+favicon: "/img/black-lock.png"
+description: "Blog of Panos Sakkos. Opinions expressed are mine."
+keywords: "panos, sakkos, technology, computer science, security, encryption, software, PwnMail, WriteRight, UoA, di, CERN, MDCN, Microsoft, Office Graph, jekyll"
+
+################
+# Intro layout #
+################
+
+black-favicon: "/img/lock.png"
+background-img: ""
+me-img: "/img/me.jpg"
+
+##############################
+# Color the browser elements #
+##############################
+color-browser: "#000000"
+apple-status-bar-style: "black"
+
+##############################
+# Dynamic Text on the header #
+##############################
+
+dynamic-typing: True
+shuffle: False # Shuffle the lines.
+loop: False
+loop-count: 1 # Set False for infinite loop, or set any number for finite loop.
+type-speed: 4 # Default 10
+start-delay: 2000 # Default 200
+delete-delay: 50000 # Default 5000
+lines: # You can add HTML Tags in the Text
+  - text: "Protecting what you ❤️"
+
+########
+# Blog #
+########
+
+enable-gesture-navigation: False
+
+post-preview-words: 96
+
+paginate: 5
+
+email-share: True
+fb-share: True
+twitter-share: True
+linkedin-share: True
+reddit-share: True
+google-plus-share: True
+tumblr-share: True
+pinterest-share: True
+pocket-share: True
+vkontakte-share: True
+
+disqus-shortname: "panossakkos"
+
+###############
+# Life Events #
+###############
+
+events:
+  - image: "/img/career/microsoft.png"
+    date: "September 2014 - Today"
+    description: "Software Engineer @ Microsoft Development Center Norway, working @ Office 365 backend services, focusing on Security Engineering"
+  - image: "/img/career/microsoft.png"
+    date: "June 2013 - September 2013"
+    description: "Software Engineering Intern @ Microsoft Development Center Norway, worked @ <a href=\"https://www.businessinsider.com/microsoft-finally-rolls-out-delve-2014-9\">Delve</a>'s backend, the Office Graph"
+  - image: "/img/career/uoa.jpg"
+    date: "October 2012 - August 2014"
+    description: "Master studies @ <a href=\"http://www.di.uoa.gr/eng\" target=\"_blank\">Department of Informatics and Telecommunications</a> on Software Engineering + <a href=\"https://scholar.google.com/citations?user=UtV6LFYAAAAJ&amp;hl=en&amp;oi=ao\" target=\"_blank\">Machine Learning researcher</a> @ <a href=\"http://kddlab.di.uoa.gr\" target=\"_blank\">KDD</a> lab"
+  - image: "/img/career/cern.jpg"
+    date: "October 2011 - September 2012"
+    description: "Security researcher @ <a href=\"https://www.cern.ch\" target=\"_blank\">CERN</a>, developed linux kernel extensions to prevent cyber attacks"
+  - image: "/img/career/pwnmail.jpg"
+    date: "June 2010 - November 2010"
+    description: "Created <a href=\"https://www.google.com/search?q=pwn+mail\" target=\"_blank\">Pwn Mail</a>, a Cydia iPhone app for spoofing emails. It served &gt; 260,000 emails but it was discontinued after a legal threat by Steve Jobs"
+  - image: "/img/career/uoa.jpg"
+    date: "October 2007 - September 2011"
+    description: "Bachelor studies @ <a href=\"http://www.di.uoa.gr/eng\" target=\"_blank\">Department of Informatics and Telecommunications</a> on Computer Science and Telecomunications"
+
+# First image of the Career timeline
+timeline-img: "/img/career/default.jpg"
+
+##################
+# Contact layout #
+##################
+
+email: "panos.sakkos@gmail.com"
+
+################
+# Author Blurb #
+################
+
+# The author blurb goes underneath blog posts.
+# This works best when your author blurb image has a transparent background, or matches your site background color.
+
+# if the author_blurb is not set, then this feature is skipped
+author_blurb: "Panos is on a mission to protect what you ❤️ by delivering products that utilize cryptographic principles and respect the privacy of their users. In the past he did research in Computer Security and Machine Learning and currently he works as a Software Engineer for Office 365, focusing on Security Engineering."
+author_blurb_image: "/img/me.jpg"
+
+##################
+# Social Buttons #
+##################
+
+social:
+  - title: "github"
+    url: "https://github.com/PanosSakkos"
+  - title: "linkedin"
+    url: "https://no.linkedin.com/in/PanosSakkos"
+  - title: "twitter"
+    url: "https://twitter.com/thepanoss"
+  - title: "bitcoin"
+    url: "https://blockchain.info/address/1LHuKC9Em3KA5yoZaf7nngnNdf9K7s2gSi"
+  - title: "rss"
+    url: "/feed.xml"
+
+############
+# 404 page #
+############
+
+404-img: "/img/labtocat.png"
+
+################################################################################
+
+# Tread carefully if you want to change the variables bellow this point!
+
+# Pagination path
+paginate_path: "blog/page:num"
+
+# Enable minification SASS
+sass:
+  style: compressed
+
+# Exclusion list from the generated _site
+exclude: ["Rakefile", "LICENSE", "readme.markdown", "vendor", "scripts"]
+
+gems:
+  - jekyll-paginate
+  - jemoji
