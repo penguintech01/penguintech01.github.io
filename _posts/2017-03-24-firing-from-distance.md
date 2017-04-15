@@ -3,7 +3,7 @@ layout: post
 section-type: post
 title: Firing from distance! 👀 🔫
 category: tech
-tags: [ 'redteam', 'pentesting', 'kali', 'tor' ]
+tags: [ 'redteam', 'kali', 'tor' ]
 ---
 
 I decided to start a [#redteam](/tags/redteam.html) series of posts, so here we are!

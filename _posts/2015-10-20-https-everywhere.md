@@ -3,7 +3,7 @@ layout: post
 section-type: post
 title: Contributing to HTTPS Everywhere
 category: tech
-tags: [ 'opensource', 'tor' ]
+tags: [ 'opensource', 'privacy' ]
 ---
 There is a very simple way to have an impact on privacy and security by contributing to [HTTPS Everywhere](https://www.eff.org/https-everywhere).
 It's a collaboration project between the [Tor project](https://www.torproject.org) and the [Electronic Frontier Foundation](https://www.eff.org) (EFF).
