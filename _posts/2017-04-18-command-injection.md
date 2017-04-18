@@ -7,7 +7,7 @@ tags: [ 'redteam', 'kali', 'dvwa' ]
 ---
 Command Injection is the manipulation of a vulnerable software in order to execute arbitrary commands on the host operating system.
 Command Injections are possible when the vulnerable application skips the input validation before executing a shell command on the host operating system.
-We'll get our hands on DVWA's Command Injection section, and then we'll open a backdoor on the host, using [Metasploit](https://www.metasploit.com/).
+We'll get our hands on [DVWA]({% post_url 2017-04-02-dvwa-kali %})'s Command Injection section, and then we'll open a backdoor on the host, using [Metasploit](https://www.metasploit.com/).
 
 Visit the *Command Injection* section of DVWA.
 
