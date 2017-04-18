@@ -35,7 +35,7 @@ Now, let's listen on port *4444* using netcat and redirect all the incoming byte
 
 ![ci-3](/img/posts/ci/ci-3.png)
 
-As you noticed the page is loading forever, so our backdoor is open and waiting for us... :smile:
+As you will notice, the page is loading forever, which means that our backdoor is open and waiting for us... :smile:
 
 Let's start msfconsole and open the shell on the server:
 
@@ -50,7 +50,7 @@ set RHOST 127.0.0.1
 
 Note that we didn't set the LPORT of bind_tcp, since the default one is *4444*.
 
-As you notice we are the *www-data* user, and that's why we can't read the /etc/shadow file, which contains the user passwords of the operating system.
+As you can see, we are the *www-data* user, and that's why we can't read the /etc/shadow file, which contains the user passwords of the operating system.
 But, we have all the privileges that *www-data* user has and we can e.g. modify DVWA or escalate to root, by exploiting a local privilege escalation vulnerability.
 
 Happy binding!
