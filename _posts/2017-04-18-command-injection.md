@@ -25,7 +25,7 @@ Now, let's try to append a list bash command after our input IP address:
 
 ![ci-2](/img/posts/ci/ci-2.png)
 
-Sweet, DVWA simply appends our input in the underlying bash command!
+Sweet, DVWA simply appends our input to the underlying bash command!
 
 Now, let's listen on port *4444* using netcat and redirect all the incoming bytes to a bash shell:
 
