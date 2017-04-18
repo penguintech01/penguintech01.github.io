@@ -13,7 +13,7 @@ Visit the *Command Injection* section of DVWA.
 
 ![ci-0](/img/posts/ci/ci-0.png)
 
-Tge page says that it will ping an IP address for us, so let's see what will do for the IP *127.0.0.1*:
+The page says that it will ping an IP address for us, so let's see what will do for the IP *127.0.0.1*:
 
 ![ci-1](/img/posts/ci/ci-1.png)
 
