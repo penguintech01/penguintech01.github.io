@@ -19,6 +19,10 @@ The page says that it will ping an IP address for us, so let's see what will do 
 
 Now, let's try to append a list bash command after our input IP address:
 
+<pre><code data-trim class="bash">
+127.0.0.1; ls
+</code></pre>
+
 ![ci-2](/img/posts/ci/ci-2.png)
 
 Sweet, DVWA simply appends our input in the underlying bash command!
