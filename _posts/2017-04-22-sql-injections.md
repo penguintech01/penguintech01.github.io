@@ -12,7 +12,7 @@ Let's navigate to the *SQL Injection* section of DVWA and look at its source:
 
 ![sqli](/img/posts/sqli/sqli-source.png)
 
-As you can see the web app queries the users table, for a given ID value, which is provided by the user and is not validated.
+As you can see the web app queries the users table, for a given ID value, which is provided by the user and is not sanitized.
 Then the results are being iterated and returned to the client.
 
 First let's use the web app to query for user the id 1:
@@ -28,8 +28,8 @@ Now let's inject a condition that will always be true, in order to read all the 
 ![sqli](/img/posts/sqli/sqli-0.png)
 
 That's a start, we know that the web app is vulnerable, but the data we got back are not that interesting.
-We are able enumerate manually the id and get the same results back, so this is not data that we're not authorized to access.
-How can we access other columns other than the first and the last name?
+We are able enumerate manually the id and get the same results back anyway, so this is not data that we're not authorized to access.
+So, how can we access other columns other than the first and the last name?
 
 Let's try to append a SQL query after the web app's query:
 
@@ -41,9 +41,9 @@ Well, that didn't quite work:
 
 > You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SELECT password FROM users WHERE user_id = '1'' at line 1
 
-The reason that didn't work is because *mysqli_query* doesn't allow the execution of more than one query in a single call.
+The reason it didn't work is because *mysqli_query* doesn't allow the execution of more than one query in a single call.
 
-The SQL UNION operator will come handy in here.
+The SQL UNION operator will come in handy here.
 The UNION operator expects two result table operands, with the same number of columns and appends the second table at the end of the first one.
 So, let's close the web app's query, and then do a UNION on our injected query, which will be asking for the passwords column of the users table:
 
