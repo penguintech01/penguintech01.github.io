@@ -27,7 +27,7 @@ Now let's inject a condition that will always be true, in order to read all the 
 
 ![sqli](/img/posts/sqli/sqli-0.png)
 
-That's a start, we know that the web app is vulnerable, but the data we got back are not that interesting.
+That's a start, we know that the web app is vulnerable, but the data we got back is not that interesting.
 We are able enumerate manually the id and get the same results back anyway, so this is not data that we're not authorized to access.
 So, how can we access other columns other than the first and the last name?
 
