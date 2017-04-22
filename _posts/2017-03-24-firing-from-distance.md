@@ -61,7 +61,7 @@ But for practical reasons (actually seeing our IP address changing), let's GET t
 
 ![proxychains](/img/posts/proxychains/proxychains-0.png)
 
-You can verify that your IP is one of Tor's exit nodes by searching for it [here](https://check.torproject.org/exit-addresses)
+You can verify that your IP is one of Tor's exit nodes by searching for it [here](https://check.torproject.org/exit-addresses).
 
 Now, let's add one more proxy (located in Venezuela), after Tor in our chain:
 
