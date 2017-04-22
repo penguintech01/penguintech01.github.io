@@ -19,7 +19,7 @@ First let's use the web app to query for user the id 1:
 
 ![sqli](/img/posts/sqli/sqli.png)
 
-Let's inject a condition that will always be true, in order to read all the tuples from the users table:
+Now let's inject a condition that will always be true, in order to read all the tuples from the users table:
 
 <pre><code data-trim class="bash">
 ' OR ''='
