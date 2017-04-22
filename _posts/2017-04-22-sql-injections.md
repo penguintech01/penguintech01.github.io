@@ -31,7 +31,7 @@ That's a start, but the data we got back are not that interesting.
 We are able enumerate manually the id and get the same results back, so this is not data that we're not authorized to access.
 How can we access other columns other than the first and the last name?
 
-Let's try to append an SQL query after the web app's query:
+Let's try to append a SQL query after the web app's query:
 
 <pre><code data-trim class="bash">
 '; SELECT password FROM users WHERE user_id = '1
