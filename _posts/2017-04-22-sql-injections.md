@@ -6,7 +6,7 @@ category: tech
 tags: [ 'redteam', 'kali', 'dvwa' ]
 ---
 In this post we'll use [DVWA]({% post_url 2017-04-02-dvwa-kali %}) as usually, in order to access its user passwords using SQL injections.
-SQL injections are similar to [XSS]({% post_url 2017-04-08-dvwa-xss %}) and [command injection]({% post_url 2017-04-18-command-injection %}) attacks, in the way that user input is not validated and it ends up manipulating the vulnerable application.
+SQL injections are similar to [XSS]({% post_url 2017-04-15-dvwa-xss %}) and [command injection]({% post_url 2017-04-18-command-injection %}) attacks, in the way that user input is not sanitized and it ends up manipulating the vulnerable application.
 
 Let's navigate to the *SQL Injection* section of DVWA and look at its source:
 
@@ -28,7 +28,7 @@ Let's inject a condition that will always be true, in order to read all the tupl
 ![sqli](/img/posts/sqli/sqli-0.png)
 
 That's a start, but the data we got back are not that interesting.
-We are able enumerate manually the id and get the same results back, so this is not data that we're not supposed to access.
+We are able enumerate manually the id and get the same results back, so this is not data that we're not authorized to access.
 How can we access other columns other than the first and the last name?
 
 Let's try to append an SQL query after the web app's query:
@@ -44,7 +44,7 @@ Well, that didn't quite work:
 The reason that didn't work is because *mysqli_query* doesn't allow the execution of more than one query in a single call.
 
 The SQL UNION operator will come handy in here.
-This operator expects two result table operands, with the same number of columns and appends the second table at the end of the first one.
+The UNION operator expects two result table operands, with the same number of columns and appends the second table at the end of the first one.
 So, let's close the web app's query, and then do a UNION on our injected query, which will be asking for the passwords column of the users table:
 
 <pre><code data-trim class="bash">
@@ -57,4 +57,4 @@ Note that we are commenting out the web app's SQL query that comes after our inj
 
 Success!
 
-As you can see the passwords are hashed, but we'll crack them at the next post :smile:
+As you can see the passwords are hashed, but we'll crack them in a future post :smile:
