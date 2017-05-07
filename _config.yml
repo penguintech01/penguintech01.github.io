@@ -34,8 +34,8 @@ lang: "en"
 title: "{ Panos Sakkos }"
 short-title: "{ Panos }"
 favicon: "/img/black-lock.png"
-description: "Blog of Panos Sakkos. Opinions expressed are mine."
-keywords: "panos, sakkos, technology, computer science, security, encryption, software, PwnMail, WriteRight, UoA, di, CERN, MDCN, Microsoft, Office Graph, jekyll"
+description: "Blog of Panos Sakkos, writing on security, privacy and open source. Opinions expressed here are mine."
+keywords: "panos, sakkos, security, privacy, open source, encryption, software, PwnMail, WriteRight, UoA, di, CERN, MDCN, Microsoft, jekyll"
 
 ################
 # Intro layout #
