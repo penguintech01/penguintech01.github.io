@@ -1,9 +1,9 @@
 ---
 layout: post
 section-type: post
-title: Firing from distance! 👀 🔫
+title: Firing from distance with proxychains! 👀 🔫
 category: tech
-tags: [ 'redteam', 'kali', 'tor' ]
+tags: [ 'redteam', 'kali', 'tor', 'proxychains' ]
 ---
 
 I decided to start a [#redteam](/tags/redteam.html) series of posts, so here we are!
