@@ -18,7 +18,7 @@ The visual touches that I believe that make the theme a bit more personal,
 is the owner's picture in the home page, and the blurred background, because it forces the eye to focus on the owner's photo.
 Moreover, Grayscale's neutral glyphicon of the header is replaced by a black and white version of the favicon.
 
-The repo lives [here](https://github.com/PanosSakkos/personal-jekyll-theme) and it's under [pull request](https://github.com/mattvh/jekyllthemes/pull/134) for [Jekyll Themes](https://jekyllthemes.org) and indexed in Jekyll's themes [wiki](https://github.com/jekyll/jekyll/wiki/Themes).
+The repo lives [here](https://github.com/PanosSakkos/personal-jekyll-theme) and it's under [pull request](https://github.com/mattvh/jekyllthemes/pull/134) for [Jekyll Themes](http://jekyllthemes.org) and indexed in Jekyll's themes [wiki](https://github.com/jekyll/jekyll/wiki/Themes).
 
 Of course, the theme will evolve over the time and as soon as time permits, the blog will support discovery with hashtags.
 

@@ -129,7 +129,7 @@ email: "panos.sakkos@gmail.com"
 # This works best when your author blurb image has a transparent background, or matches your site background color.
 
 # if the author_blurb is not set, then this feature is skipped
-author_blurb: "Panos is on a mission to protect what you ❤️ by delivering products that utilize cryptographic principles and respect the privacy of their users. In the past he did research in Computer Security and Machine Learning and currently he works as a Software Engineer for Office 365, focusing on Security Engineering."
+author_blurb: "Panos is on a mission to protect what you ❤️ by shipping secure products that respect the privacy of their users. In the past he did research in Computer Security and Machine Learning and currently he works as a Software Engineer for Office 365, focusing on Security Engineering."
 author_blurb_image: "/img/me.jpg"
 
 ##################
