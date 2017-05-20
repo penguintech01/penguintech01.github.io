@@ -1,7 +1,7 @@
 ---
 layout: post
 section-type: post
-title: Firing from distance with proxychains! 👀 🔫
+title: Hiding behind proxies
 category: tech
 tags: [ 'redteam', 'kali', 'tor', 'proxychains' ]
 ---
@@ -81,5 +81,3 @@ Comment out the "strict_chain" option and uncomment the "random_chain":
 Now my traffic is going through either the three Tor nodes and then the proxy in Venezuela, or it will start from the proxy in Venezuela and then go through the three Tor nodes.
 
 Have fun scanning!
-
-Disclaimer: You should be poking only systems that you have explicit approval to do so.
