@@ -100,7 +100,7 @@ Now we need to construct the message that its authentic signing will match the a
 <pre><code data-trim class="ruby">
 input = 'message'.force_encoding('US-ASCII')
 
-# Construct the padding
+# Construct the padding so when our message is appended on the secret, then our 'forged' string is pushed to the next block message
 length = (input.length + 6) * 8
 input << 0x80
 input << 0x00 while (input.size + 6) % 64 != 56
@@ -128,7 +128,8 @@ And the authentic signing of this input is:
 SHA256('secret' | input) -> 'f9f333d547088763f8767a241baae7b50532f95a5ad75071a8e2960bc430fd37'
 </code></pre>
 
-Just like we computed! Which means that our message will be authenticated and pass the integrity check without any problems :smile:
+Just like we computed!
+Which means that our message will be authenticated and pass the integrity check without any problems :smile:
 
 Here is the full source code:
 
