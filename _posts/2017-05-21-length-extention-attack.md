@@ -6,8 +6,8 @@ category: tech
 tags: [ 'crypto', 'redteam' ]
 ---
 Digital signatures are used in the digital world in order to prove the authenticity and integrity of a message.
-In other words it's the way to prove that you sent a piece of data and that the data was not tampered
-Today we'll see what can go wrong when this scheme is not implemented correctly.
+In other words it's the way to prove that you sent a piece of data and that the data was not tampered.
+Today we'll see what can go wrong when this scheme is not designed correctly.
 
 Digital signatures operate on a secret key, which is shared across the parties that need the authentication scheme, the data that needs to be signed and a mathematical function.
 In order to generate the signature, you need to apply the mathematical function on the secret and the data to generate the signature which later will be shared along with the transmitted message.
@@ -25,7 +25,7 @@ To understand how the attack works, we need first to discuss how the Merkle–Da
 
 Initially the message is padded, in order to be divisible by a specific value, i.e. in the case of SHA-256 this value is 512.
 The padding scheme is to append a *1* bit right after the message, then *0* s and the length of the original message, until the message becomes divisible by 512.
-For example the message "Hello world" is padded to:
+For example the message *"Hello world"* is padded to:
 
 <pre><code data-trim class="bash">
 # Message in hex-------------| 1 after the message
@@ -40,8 +40,8 @@ For example the message "Hello world" is padded to:
 </code></pre>
 
 After the padding pre-processing is done, we enter the stage of compression.
-The compression is a compression function f applied on each 256 block of the message and the previous result for the compression function.
-For the first round, a fixed value, called initialization vector, is used as the output of the "previous" compression function.
+The compression is a compression function *f*, applied on each 256 bits block of the message and the previous result for the compression function.
+For the first round, a fixed value, called Initialization Vector, is used as the output of the "previous" compression function.
 When the compression is performed on all the blocks of the message, then the result is the digest of the hash function:
 
 ![merkle](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Merkle-Damgard_hash_big.svg/800px-Merkle-Damgard_hash_big.svg.png)
@@ -50,14 +50,14 @@ So, given the signing scheme that we mentioned earlier, the length of the secret
 
 Nothing. And this is what length extension attacks are about.
 
-Let's assume we have the authentic signature of the following message *message* when the secret *secret* is applied:
+Let's assume we have the authentic signature of the message *"message"* when the secret *"secret"* is applied:
 
 <pre><code data-trim class="bash">
 SHA256('secret' | 'message') -> '33dd93031495b1e73b345ef5b7f494146d6c361908b4f2ad9cf7bbd35cffaa26'
 </code></pre>
 
 Our goal is to construct a new signature on a message that is appended on the 'message' string, without knowing the secret that was used to sign the message.
-For that we'll need to construct a version of SHA256 that allows to inject the initialization Vector and the length of the input message:
+For that we'll need to construct a version of SHA-256 that allows to inject the Initialization Vector and the length of the input message:
 
 <pre><code data-trim class="ruby">
 class SHA256
@@ -74,15 +74,15 @@ class SHA256
   end
 
   def self.inner_digest(input, z, length)
-
+    # Padding and compression rounds of SHA-256
   end
 
 </code></pre>
 
-By calling the digest function, we get back the expected SHA-256 digest of the input.
-But, by calling the inner_digest function with the intercepted digest as the initialization vector and the length of the known message the data that we want to append, we can continue the computations of the compression functions, just like if we were the one who knows the secret as well!
+By calling the *digest* function, we get back the expected SHA-256 digest of the input.
+But, by calling the *inner_digest* function with the intercepted digest as the initialization vector and the length of the known message the data that we want to append, we can continue the computations of the compression functions, just like if we were the one who knows the secret as well!
 
-Let's compute the signature of 'messageforged':
+Let's compute the signature of *"messageforged"*:
 
 <pre><code data-trim class="ruby">
 input = 'forged'.force_encoding('US-ASCII')
@@ -95,7 +95,9 @@ input = 'message'.force_encoding('US-ASCII')
 And let's construct the message that its signing will match the above signature, by computing the padding that would be applied by the original signer of the forged message:
 
 <pre><code data-trim class="ruby">
-# Construct padding scheme
+input = 'message'.force_encoding('US-ASCII')
+
+# Construct the padding
 length = (input.length + 6) * 8
 input << 0x80
 input << 0x00 while (input.size + 6) % 64 != 56
@@ -123,3 +125,7 @@ SHA256('secret' | 'messageforged') -> 'f9f333d547088763f8767a241baae7b50532f95a5
 </code></pre>
 
 Just like we computed! Which means that our message will be authenticated and pass the integrity check without any problems :smile:
+
+Here is the full source code:
+
+<script src="https://gist.github.com/PanosSakkos/58fda8b16f12a4b52790b0011322d4c9.js"></script>
