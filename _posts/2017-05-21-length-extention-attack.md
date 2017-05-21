@@ -125,7 +125,7 @@ The input is:
 And the authentic signing of this input is:
 
 <pre><code data-trim class="bash">
-SHA256('secret' | 'messageforged') -> 'f9f333d547088763f8767a241baae7b50532f95a5ad75071a8e2960bc430fd37'
+SHA256('secret' | input) -> 'f9f333d547088763f8767a241baae7b50532f95a5ad75071a8e2960bc430fd37'
 </code></pre>
 
 Just like we computed! Which means that our message will be authenticated and pass the integrity check without any problems :smile:
