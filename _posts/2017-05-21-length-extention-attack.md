@@ -49,7 +49,15 @@ When the compression is performed on all the blocks of the message, then the res
 
 ![merkle](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Merkle-Damgard_hash_big.svg/800px-Merkle-Damgard_hash_big.svg.png)
 
-So, given the signing scheme that we mentioned earlier, the length of the secret used, the message that is signed, its digest the above hashing function, and a hash function that behaves like we described above, what prevents us from forging a message that will continue on the last compression function that was applied?
+So given:
+
+ 1. the signing scheme that we mentioned earlier,
+ 2. the length of the secret used,
+ 3. the message that is signed,
+ 4. its digest the above hashing function and
+ 5. a hash function that behaves like we described above,
+
+what prevents us from forging an authentic signature by continuing the compression rounds on an arbitrary message that we will append on the known message?
 
 Nothing. And this is what length extension attacks are about.
 
