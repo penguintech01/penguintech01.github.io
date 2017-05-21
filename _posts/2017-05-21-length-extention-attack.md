@@ -93,7 +93,7 @@ input = 'message'.force_encoding('US-ASCII')
 # Forged signature:       f9f333d547088763f8767a241baae7b50532f95a5ad75071a8e2960bc430fd37
 </code></pre>
 
-And let's construct the message that its signing will match the above signature, by computing the padding that would be applied by the original signer of the forged message:
+Now we need to construct the message that its signing will match the above signature, by computing the padding that would be applied by the original signer of the forged message:
 
 <pre><code data-trim class="ruby">
 input = 'message'.force_encoding('US-ASCII')
@@ -120,7 +120,7 @@ The input is:
 #    104 | forged ---------------------|  
 </code></pre>
 
-And the signing of this input is:
+And the authentic signing of this input is:
 
 <pre><code data-trim class="bash">
 SHA256('secret' | 'messageforged') -> 'f9f333d547088763f8767a241baae7b50532f95a5ad75071a8e2960bc430fd37'
