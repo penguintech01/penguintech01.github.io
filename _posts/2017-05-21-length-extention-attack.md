@@ -85,7 +85,7 @@ class SHA256
 By calling the *digest* function, we get back the expected SHA-256 digest of the input.
 But, by calling the *inner_digest* function with the intercepted digest as the initialization vector and the length of the known message the data that we want to append, we can continue the computations of the compression functions, just like if we were the one who knows the secret as well!
 
-Let's compute the signature of *"messageforged"*:
+Let's compute the signature of *"messageforged"* by injecting the signature that we intercepted as the Initialization Vector of our first compression round:
 
 <pre><code data-trim class="ruby">
 input = 'forged'.force_encoding('US-ASCII')
