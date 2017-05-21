@@ -50,7 +50,7 @@ So, given the signing scheme that we mentioned earlier, the length of the secret
 
 Nothing. And this is what length extension attacks are about.
 
-Let's assume we have the authentic signature of the following message *message* when the secreat *secret* is applied:
+Let's assume we have the authentic signature of the following message *message* when the secret *secret* is applied:
 
 <pre><code data-trim class="bash">
 SHA256('secret' | 'message') -> '33dd93031495b1e73b345ef5b7f494146d6c361908b4f2ad9cf7bbd35cffaa26'
@@ -72,9 +72,54 @@ class SHA256
             [0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19],
             input.length)
   end
-  
+
   def self.inner_digest(input, z, length)
 
   end
 
 </code></pre>
+
+By calling the digest function, we get back the expected SHA-256 digest of the input.
+But, by calling the inner_digest function with the intercepted digest as the initialization vector and the length of the known message the data that we want to append, we can continue the computations of the compression functions, just like if we were the one who knows the secret as well!
+
+Let's compute the signature of 'messageforged':
+
+<pre><code data-trim class="ruby">
+input = 'forged'.force_encoding('US-ASCII')
+puts 'Forged signature:       ' + SHA256.inner_digest(input, [0x33dd9303, 0x1495b1e7, 0x3b345ef5, 0xb7f49414, 0x6d6c3619, 0x08b4f2ad, 0x9cf7bbd3, 0x5cffaa26], 70)
+
+input = 'message'.force_encoding('US-ASCII')
+# Forged signature:       f9f333d547088763f8767a241baae7b50532f95a5ad75071a8e2960bc430fd37
+</code></pre>
+
+And let's construct the message that its signing will match the above signature, by computing the padding that would be applied by the original signer of the forged message:
+
+<pre><code data-trim class="ruby">
+# Construct padding scheme
+length = (input.length + 6) * 8
+input << 0x80
+input << 0x00 while (input.size + 6) % 64 != 56
+input += [length].pack('Q').reverse
+
+input = 'secret' + input + 'forged'
+</code></pre>
+
+The input is:
+
+<pre><code data-trim class="bash">
+0x73 0x73 0x61 0x67 0x65 0x80 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+0x00 0x68 0x66 0x6f 0x72 0x67 0x65 0x64
+</code></pre>
+
+And the signing of this input is:
+
+<pre><code data-trim class="bash">
+SHA256('secret' | 'messageforged') -> 'f9f333d547088763f8767a241baae7b50532f95a5ad75071a8e2960bc430fd37'
+</code></pre>
+
+Just like we computed! Which means that our message will be authenticated and pass the integrity check without any problems :smile:
