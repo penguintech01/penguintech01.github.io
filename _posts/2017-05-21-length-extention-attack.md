@@ -54,8 +54,8 @@ So given:
  1. the signing scheme that we mentioned earlier,
  2. the length of the secret used,
  3. the message that is signed,
- 4. its digest the above hashing function and
- 5. a hash function that behaves like we described above,
+ 4. its digest and
+ 5. a hash function that behaves like the one we described above,
 
 what prevents us from forging an authentic signature by continuing the compression rounds on an arbitrary message that we will append on the known message?
 
