@@ -39,7 +39,7 @@ For example the message *"Hello world"* is padded to:
 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x58
-                                   # 88 
+                                   # 88
 </code></pre>
 
 After the padding pre-processing is done, we enter the stage of compression.
@@ -95,7 +95,7 @@ input = 'message'.force_encoding('US-ASCII')
 # Forged signature:       f9f333d547088763f8767a241baae7b50532f95a5ad75071a8e2960bc430fd37
 </code></pre>
 
-Now we need to construct the message that its signing will match the above signature, by computing the padding that would be applied by the original signer of the forged message:
+Now we need to construct the message that its authentic signing will match the above forged signature, by computing the padding that would be applied by the original signer of the forged message:
 
 <pre><code data-trim class="ruby">
 input = 'message'.force_encoding('US-ASCII')
