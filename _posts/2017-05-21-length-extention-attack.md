@@ -28,7 +28,7 @@ The padding scheme is to append a *1* bit right after the message, then *0* s an
 For example the message *"Hello world"* is padded to:
 
 <pre><code data-trim class="bash">
-# H    e    l    l    0         w    o
+# H    e    l    l    o         w    o
 0x48 0x65 0x6c 0x6c 0x6f 0x20 0x77 0x6f
 #  r    l    d   1
 0x72 0x6c 0x64 0x80 0x00 0x00 0x00 0x00
