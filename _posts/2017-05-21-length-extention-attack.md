@@ -99,7 +99,6 @@ Let's compute the signature of *"messageforged"* by injecting the signature that
 input = 'forged'.force_encoding('US-ASCII')
 puts 'Forged signature:       ' + SHA256.inner_digest(input, [0x33dd9303, 0x1495b1e7, 0x3b345ef5, 0xb7f49414, 0x6d6c3619, 0x08b4f2ad, 0x9cf7bbd3, 0x5cffaa26], 70)
 
-input = 'message'.force_encoding('US-ASCII')
 # Forged signature:       f9f333d547088763f8767a241baae7b50532f95a5ad75071a8e2960bc430fd37
 </code></pre>
 
