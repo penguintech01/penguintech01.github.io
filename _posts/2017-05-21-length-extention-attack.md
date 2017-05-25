@@ -24,7 +24,7 @@ This scheme is vulnerable to length extension attacks, and this practically mean
 To understand how the attack works, we need first to discuss how the Merkle–Damgård construction works.
 
 Initially the message is padded, in order to be divisible by a specific value, i.e. in the case of SHA-256 this value is 512.
-The padding scheme is to append a *1* bit right after the message, then *0* s and the length of the original message, until the message becomes divisible by 512.
+The padding scheme is to append a *1* bit right after the message, then *0*s and the length of the original message, until the message becomes divisible by 512.
 For example the message *"Hello world"* is padded to:
 
 <pre><code data-trim class="bash">
