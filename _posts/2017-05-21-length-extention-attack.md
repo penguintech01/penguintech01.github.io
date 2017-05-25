@@ -140,3 +140,5 @@ Which means that our message will be authenticated and pass the integrity check 
 Here is the full source code:
 
 <script src="https://gist.github.com/PanosSakkos/58fda8b16f12a4b52790b0011322d4c9.js"></script>
+
+Happy forging!
