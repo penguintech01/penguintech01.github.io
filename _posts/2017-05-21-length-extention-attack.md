@@ -87,7 +87,7 @@ class SHA256
   def self.inner_digest(input, z, length)
     # Padding and compression rounds of SHA-256
   end
-
+end
 </code></pre>
 
 By calling the *digest* function, we get back the expected SHA-256 digest of the input.
