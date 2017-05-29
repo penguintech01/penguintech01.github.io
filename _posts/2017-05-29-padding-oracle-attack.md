@@ -108,7 +108,7 @@ Now let's submit C'<sub>0</sub> | C<sub>1</sub> to the Oracle and let's see what
 C'<sub>0</sub> ⊕ D(C<sub>1</sub>) -> <br/>
 C<sub>0</sub> ⊕ 00000001 ⊕ 0000000X ⊕ (P<sub>1</sub> ⊕ C<sub>0</sub>) -> <br/>
 (C<sub>0</sub> ⊕ C<sub>0</sub>) ⊕ 00000001 ⊕ 0000000X ⊕ P<sub>1</sub> -> <br/>
-0 ⊕ 00000001 ⊕ 0000000X ⊕ P<sub>1</sub> -> <br/>
+00000000 ⊕ 00000001 ⊕ 0000000X ⊕ P<sub>1</sub> -> <br/>
 00000001 ⊕ 0000000X ⊕ P<sub>1</sub>
 
 Let's assume that *X* is the correct guess of the last byte of P<sub>1</sub>, what will happen in this case?
