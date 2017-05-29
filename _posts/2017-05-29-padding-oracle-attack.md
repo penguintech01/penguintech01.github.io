@@ -110,6 +110,8 @@ Now let's submit C'<sub>0</sub> | C<sub>1</sub> to the Oracle and let's see what
 C'<sub>0</sub> XOR D(C<sub>1</sub>) -> <br/>
 C<sub>0</sub> XOR 00000001 XOR 0000000X XOR (P<sub>1</sub> XOR C<sub>0</sub>) -> <br/>
 (C<sub>0</sub> XOR C<sub>0</sub>) XOR 00000001 XOR 0000000X XOR P<sub>1</sub> -> <br/>
+0 XOR 00000001 XOR 0000000X XOR P<sub>1</sub> -> <br/>
+00000001 XOR 0000000X XOR P<sub>1</sub> -> <br/>
 00000001 XOR 0000000X XOR P<sub>1</sub>
 
 Let's assume that X is the correct guess of the last byte of P<sub>1</sub>, what will happen in this case?
