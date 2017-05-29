@@ -98,7 +98,7 @@ By submitting ciphertexts that we construct to the Oracle we'll manage to recove
 
 Let's imagine that we intercepted the following ciphertext that has the length of two blocks (32 bytes):
 
-C<sub>0</sub> | C<sub>1</sub>
+C<sub>0</sub> \| C<sub>1</sub>
 
 Now let's construct a ciphertext C'<sub>0</sub> like this:
 
