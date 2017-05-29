@@ -22,7 +22,7 @@ In order to understand how the attack works, we need first to understand how CBC
 Encryption and decryption work with Block Ciphers in their core.
 Imagine the Block Ciphers as black boxes, that get as an input a fixed length key, a fixed length block of plaintext/ciphertext and they spit out the corresponding block of ciphertext/plaintext.
 Since these blackboxes have a fixed length input, we need to somehow combine them, so we can enable the encryption/decryption of arbitrary sized inputs.
-This is what Block Cipher Modes are about with CBC being the most popular of them.
+This is what Block Cipher Modes are about with CBC being the most popular among them.
 
 When encrypting a plaintext with a block cipher in CBC mode, then the plaintext input of each block is XOR'ed with the ciphertext output of the previous block cipher.
 That way the slightest change in the plaintext input, will affect all the following blocks of its block, apart from the block itself.
