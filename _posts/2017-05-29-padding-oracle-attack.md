@@ -5,7 +5,7 @@ title: Recovering plaintexts with Padding Oracle Attacks 🔮
 category: tech
 tags: [ 'crypto', 'redteam' ]
 ---
-[Last time]({% post_url 2017-05-21-length-extention-attack %}) we saw how to forge a valid signature by knowing
+[Last time]({% post_url 2017-05-21-length-extention-attack %}) we saw how to forge a valid signature by intercepting
 a signed message, its authentic signature and the length of the key that was used to sign it.
 Today we'll see how to decrypt ciphertexts, without knowing the key that was used to encrypt the original plaintext.
 The only mistake that needs to be made, is for a decryption module to leak whether the padding of the ciphertext that is decrypting, has a valid padding or not!
