@@ -35,9 +35,9 @@ Here's a visualization of the process:
 In order to decrypt a ciphertext that was produced using CBC, you need to XOR the ciphertext of the previous block, with the output of the current block cipher.
 That way you nullify the encryption's XOR operation of the previous' block cipher's ciphertext:
 
-C<sub>i - 1</sub> ⊕ P<sub>i</sub> ⊕ C<sub>i - 1</sub> -> <br />
-(C<sub>i - 1</sub> ⊕ C<sub>i - 1</sub>) ⊕ P<sub>i</sub> -> <br />
-0 ⊕ P<sub>i</sub> -> <br />
+C<sub>i - 1</sub> ⊕ P<sub>i</sub> ⊕ C<sub>i - 1</sub> → <br />
+(C<sub>i - 1</sub> ⊕ C<sub>i - 1</sub>) ⊕ P<sub>i</sub> → <br />
+0 ⊕ P<sub>i</sub> → <br />
 P<sub>i</sub>
 
 ![CBC](https://upload.wikimedia.org/wikipedia/commons/6/66/Cbc_decryption.png)
@@ -108,10 +108,10 @@ C'<sub>0</sub> = C<sub>0</sub> ⊕ 00000001 ⊕ 0000000X
 Where X is a random byte between 0 and 255.
 Now let's submit C'<sub>0</sub> | C<sub>1</sub> to the Oracle and let's see what will compute:
 
-C'<sub>0</sub> ⊕ D(C<sub>1</sub>) -> <br/>
-C<sub>0</sub> ⊕ 00000001 ⊕ 0000000X ⊕ (P<sub>1</sub> ⊕ C<sub>0</sub>) -> <br/>
-(C<sub>0</sub> ⊕ C<sub>0</sub>) ⊕ 00000001 ⊕ 0000000X ⊕ P<sub>1</sub> -> <br/>
-00000000 ⊕ 00000001 ⊕ 0000000X ⊕ P<sub>1</sub> -> <br/>
+C'<sub>0</sub> ⊕ D(C<sub>1</sub>) → <br/>
+C<sub>0</sub> ⊕ 00000001 ⊕ 0000000X ⊕ (P<sub>1</sub> ⊕ C<sub>0</sub>) → <br/>
+(C<sub>0</sub> ⊕ C<sub>0</sub>) ⊕ 00000001 ⊕ 0000000X ⊕ P<sub>1</sub> → <br/>
+00000000 ⊕ 00000001 ⊕ 0000000X ⊕ P<sub>1</sub> → <br/>
 00000001 ⊕ 0000000X ⊕ P<sub>1</sub>
 
 Let's assume that *X* is the correct guess of the last byte of P<sub>1</sub>, what will happen in this case?
