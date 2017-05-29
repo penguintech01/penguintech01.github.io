@@ -53,6 +53,7 @@ For example the padding of *"Hello, world"*, for a block size of 16 bytes will b
 0x48 0x65 0x6c 0x6c 0x6f 0x2c 0x20 0x77 0x6f 0x72 0x6c 0x64 0x04 0x04 0x04 0x04
 </code></pre>
 
+
 ### The vulnerable decryption
 
 Now that we know what CBC and PKCS7 are, let's see the vulnerable Ruby code that encrypts and decrypts data using the Advanced Encryption Standard (AES) block cipher, which operates on blocks of 128 bits (or 16 bytes):
