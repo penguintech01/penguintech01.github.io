@@ -45,7 +45,7 @@ P<sub>i</sub>
 ### PKCS7 padding
 
 We need a padding scheme in order to construct inputs that have a length that is divisible by the block size, since the block ciphers operate strictly on blocks.
-The PKCS7 padding is simple, the last N bytes are padded with the value N.
+The PKCS7 padding is simple, the last *N* bytes are padded with the value *N*.
 For example the padding of *"Hello, world"*, for a block size of 16 bytes will be four 4s appended at its end:
 
 <pre><code data-trim class="bash">
