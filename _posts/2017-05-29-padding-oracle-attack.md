@@ -14,7 +14,7 @@ Yes, an innocent looking papercut like this, can make your crypto fall apart.
 In this case, the decryption module that leaks this information is called the Padding Oracle.
 The Padding Oracle Attack was initially published by [Vaudenay](http://www.iacr.org/cryptodb/archive/2002/EUROCRYPT/2850/2850.pdf) and it's a side-channel chosen-ciphertext attack that works against the Cipher Block Chaining (CBC) mode and the Public Key Cryptography Standards \#7 (PKCS7) padding scheme.
 Side-channel attacks are those that are based on the implementation of a cryptosystem.
-Chosen-ciphertext attacks, are those that enable adversary to submit chosen ciphertexts and decrypt them using a cryptosystem.
+Chosen-ciphertext attacks on the other hand, are those that enable the adversary to submit chosen ciphertexts and decrypt them using a cryptosystem.
 In order to understand how the attack works, we need first to understand how CBC and PKCS7 work.
 
 ### CBC
