@@ -35,7 +35,10 @@ Here's a visualization of the process:
 In order to decrypt a ciphertext that was produced using CBC, you need to XOR the ciphertext of the previous block, with the output of the current block cipher.
 That way you nullify the encryption's XOR operation of the previous' block cipher's ciphertext:
 
-C<sub>i - 1</sub> ⊕ P<sub>i</sub> ⊕ C<sub>i - 1</sub> -> (C<sub>i - 1</sub> ⊕ C<sub>i - 1</sub>) ⊕ P<sub>i</sub> -> 0 ⊕ P<sub>i</sub> -> P<sub>i</sub>
+C<sub>i - 1</sub> ⊕ P<sub>i</sub> ⊕ C<sub>i - 1</sub> -> <br />
+(C<sub>i - 1</sub> ⊕ C<sub>i - 1</sub>) ⊕ P<sub>i</sub> -> <br />
+0 ⊕ P<sub>i</sub> -> <br />
+P<sub>i</sub>
 
 ![CBC](https://upload.wikimedia.org/wikipedia/commons/6/66/Cbc_decryption.png)
 
