@@ -100,16 +100,16 @@ C<sub>0</sub> \| C<sub>1</sub>
 
 Now let's construct a ciphertext C'<sub>0</sub> like this:
 
-C'<sub>0</sub> = C<sub>0</sub> XOR 00000001 XOR 0000000X
+C'<sub>0</sub> = C<sub>0</sub> ⊕ 00000001 ⊕ 0000000X
 
 Where X is a random byte between 0 and 255.
 Now let's submit C'<sub>0</sub> | C<sub>1</sub> to the Oracle and let's see what will compute:
 
-C'<sub>0</sub> XOR D(C<sub>1</sub>) -> <br/>
-C<sub>0</sub> XOR 00000001 XOR 0000000X XOR (P<sub>1</sub> XOR C<sub>0</sub>) -> <br/>
-(C<sub>0</sub> XOR C<sub>0</sub>) XOR 00000001 XOR 0000000X XOR P<sub>1</sub> -> <br/>
-0 XOR 00000001 XOR 0000000X XOR P<sub>1</sub> -> <br/>
-00000001 XOR 0000000X XOR P<sub>1</sub>
+C'<sub>0</sub> ⊕ D(C<sub>1</sub>) -> <br/>
+C<sub>0</sub> ⊕ 00000001 ⊕ 0000000X ⊕ (P<sub>1</sub> ⊕ C<sub>0</sub>) -> <br/>
+(C<sub>0</sub> ⊕ C<sub>0</sub>) ⊕ 00000001 ⊕ 0000000X ⊕ P<sub>1</sub> -> <br/>
+0 ⊕ 00000001 ⊕ 0000000X ⊕ P<sub>1</sub> -> <br/>
+00000001 ⊕ 0000000X ⊕ P<sub>1</sub>
 
 Let's assume that *X* is the correct guess of the last byte of P<sub>1</sub>, what will happen in this case?
 The last byte of P<sub>1</sub> will be nullified by the XOR operation and 1 will end up in the end plaintext.
@@ -119,7 +119,7 @@ On the other hand, if *X* doesn't match the last byte of P<sub>1</sub>, then the
 We have successfully recovered the last byte of C<sub>1</sub>, how can we continue to the next byte?
 By simply computing the following C<sub>0</sub> like this:
 
-C'<sub>0</sub> = C<sub>0</sub> XOR 00000022 XOR 000000YX
+C'<sub>0</sub> = C<sub>0</sub> ⊕ 00000022 ⊕ 000000YX
 
 Where *Y* is again a value between 0 and 255.
 Now by submitting C'<sub>0</sub> | C<sub>1</sub> to the Oracle, we'll get the same behavior as before and at some point guess the correct value of *Y*.
