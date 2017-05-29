@@ -119,14 +119,16 @@ Then the end plaintext will be a valid PKCS7 padding and the Oracle will not thr
 On the other hand, if X doesn't match the last byte of P<sub>1</sub>, then the padding of the computed plaintext will not be valid, and the Oracle will throw!
 
 We have successfully recovered the last byte of C<sub>1</sub>, how can we continue to the next byte?
-By simply computing the following C<sub>0</sub>:
+By simply computing the following C<sub>0</sub> like this:
 
 C'<sub>0</sub> = C<sub>0</sub> XOR 00000022 XOR 000000YX
 
 Where Y is again a value between 0 and 255.
 Now by submitting C'<sub>0</sub> | C<sub>1</sub> to the Oracle, we'll get the same behavior as before and at some point guess the correct value of Y.
+Like this we can continue and recover all the bytes of the block and of course this can be applied for every block of the ciphertext, except the first one.
+But, the first block is (usually) the Initialization Vector so we don't even need to recover it :smile:
 
-Here is the Ruby code that intercepts a ciphertext and then performs the attack on the PaddingOracle that we saw earlier:
+Here is the Ruby code that intercepts a ciphertext and then performs the attack on the *PaddingOracle* that we saw earlier:
 
 <pre><code data-trim class="ruby">
 plaintext = 'This is a top secret message!!!'
