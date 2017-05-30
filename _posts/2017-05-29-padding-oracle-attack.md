@@ -9,7 +9,7 @@ tags: [ 'crypto', 'redteam' ]
 a signed message, its authentic signature and the length of the key that was used to sign it.
 Today we'll see how to decrypt ciphertexts, without knowing the key that was used to encrypt the original plaintext.
 The only mistake that needs to be made, is for a decryption module to leak whether the padding of the ciphertext that is decrypting, has a valid padding or not!
-Yes, an innocent looking papercut like this, will make your crypto fall apart.
+Yes, an innocent looking papercut like this, will make your crypto fall completely apart.
 
 In this case, the decryption module that leaks this information is called the Padding Oracle.
 The Padding Oracle Attack was initially published by [Vaudenay](http://www.iacr.org/cryptodb/archive/2002/EUROCRYPT/2850/2850.pdf) and it's a side-channel chosen-ciphertext attack that works against the Cipher Block Chaining (CBC) mode and the Public Key Cryptography Standards \#7 (PKCS7) padding scheme.
@@ -22,11 +22,11 @@ In order to understand how the attack works, we need first to understand how CBC
 Encryption and decryption work with Block Ciphers in their core.
 Imagine the Block Ciphers as black boxes, that get as an input a fixed length key, a fixed length block of plaintext/ciphertext and they spit out the corresponding block of ciphertext/plaintext.
 Since these blackboxes have a fixed length input, we need to somehow combine them, so we can enable the encryption/decryption of arbitrary sized inputs.
-This is what Block Cipher Modes are about with CBC being the most popular among them.
+This is what Block Cipher Modes are about, with CBC being the most popular among them.
 
 When encrypting a plaintext with a block cipher in CBC mode, then the plaintext input of each block is XOR'ed with the ciphertext output of the previous block cipher.
 That way the slightest change in the plaintext input, will affect all the following blocks of its block, apart from the block itself.
-In the case of the first block, then a random block (per plaintext encryption) called Initialization Vector is used to XOR the plaintext of the first block before it's encrypted.
+In the case of the first block, then a random block (per encryption) called Initialization Vector is used to XOR the plaintext of the first block before it's encrypted.
 
 Here's a visualization of the process:
 
@@ -44,7 +44,7 @@ P<sub>i</sub>
 
 ### PKCS7 padding
 
-We need a padding scheme in order to construct inputs that have a length that is divisible by the block size, since the block ciphers operate strictly on blocks.
+We need a padding scheme in order to construct inputs that have a length that is divisible by the block size, since the Block Ciphers operate strictly on blocks.
 The PKCS7 padding is simple, the last *N* bytes are padded with the value *N*.
 For example the padding of *"Hello, world"*, for a block size of 16 bytes will be four 4s appended at its end:
 
@@ -90,9 +90,9 @@ class PaddingOracle
 end
 </code></pre>
 
-The call to the final method in the decryption above, will also check if the padding of the result plaintext is valid, before removing it.
+The call to the *final* method in the decryption above, will also check if the padding of the result plaintext is valid, before removing it.
 If the padding is not valid, then a *OpenSSL::Cipher::CipherError* will be thrown and this information will leak to the caller.
-As a result, this is the information that we will use in order to use the decrypt method as the Padding Oracle.
+As a result, this is the information that we will use in order to use the *decrypt* method as the Padding Oracle.
 By submitting ciphertexts that we construct to the Oracle, we'll manage to recover the plaintext, without knowing the key that was used to encrypt the ciphertext that we intercepted.
 
 ### The exploit
@@ -105,7 +105,7 @@ Now let's construct a ciphertext C'<sub>0</sub> like this:
 
 C'<sub>0</sub> = C<sub>0</sub> ⊕ 00000001 ⊕ 0000000X
 
-Where X is a random byte between 0 and 255.
+Where *X* is a byte between 0 and 255.
 Now let's submit C'<sub>0</sub> | C<sub>1</sub> to the Oracle and let's see what will be computed:
 
 C'<sub>0</sub> ⊕ D(C<sub>1</sub>) → <br/>
@@ -119,15 +119,16 @@ The last byte of P<sub>1</sub> will be nullified by the XOR operation and 1 will
 Then the end plaintext will be a valid PKCS7 padding and the Oracle will not throw.
 On the other hand, if *X* doesn't match the last byte of P<sub>1</sub>, then the padding of the computed plaintext will not be valid, and the Oracle will throw!
 
-We have successfully recovered the last byte of C<sub>1</sub>, how can we continue to the next byte?
-By simply computing the following C<sub>0</sub> like this:
+By trying all the possible values of *X*, we will successfully recover the last byte of C<sub>1</sub>.
+Now how can we continue to the next byte?
+By simply following the same logic for the second last byte of C<sub>0</sub>, like this:
 
 C'<sub>0</sub> = C<sub>0</sub> ⊕ 00000022 ⊕ 000000YX
 
-Where *Y* is again a value between 0 and 255.
+Where *Y* is again a value between 0 and 255 and *X* is the byte that we recovered earlier.
 Now by submitting C'<sub>0</sub> | C<sub>1</sub> to the Oracle, we'll get the same behavior as before and at some point guess the correct value of *Y*.
 Like this we can continue and recover all the bytes of the block and of course this can be applied for every block of the ciphertext, except the first one.
-But, the first block is (usually) the Initialization Vector so we don't even need to recover it :smile:
+But, the first block is the Initialization Vector so we don't even need to recover it :smile:
 
 Here is the Ruby code that intercepts a ciphertext and then performs the attack on the *PaddingOracle* that we saw earlier:
 
