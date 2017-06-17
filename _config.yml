@@ -3,7 +3,7 @@
 
 url: "https://panossakkos.github.io"
 baseurl: ""
-force-https: True
+force-https: false
 
 syntax-highlight: True
 
@@ -29,10 +29,10 @@ icon-192p: "/img/web-app/icon-192p.png"
 # HTML Head #
 #############
 
-author: "Panos Sakkos"
+author: "Aditya Narayan"
 lang: "en"
-title: "{ Panos Sakkos }"
-short-title: "{ Panos }"
+title: "{ Aditya Narayan }"
+short-title: "{ Aditya }"
 favicon: "/img/black-lock.png"
 description: "Blog of Panos Sakkos, writing on security, privacy and open source. Opinions expressed here are mine."
 keywords: "panos, sakkos, security, privacy, open source, encryption, software, PwnMail, UoA, di, CERN, MDCN, Microsoft, jekyll"
@@ -119,7 +119,7 @@ timeline-img: "/img/career/default.jpg"
 # Contact layout #
 ##################
 
-email: "panos.sakkos@gmail.com"
+email: "aditya.narayan@gmail.com"
 
 ################
 # Author Blurb #
